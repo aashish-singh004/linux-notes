@@ -97,9 +97,153 @@ f means file name
 tar -czvf archive.tar.gz ~/Desktop/Files/file[1-3].txt   gz is also a extension, gotta have to use it , and to extract use
 tar -xzvf archive.tar.gz and to view tar file use tar -tf archieve.tar it will look and output whatever is inside that tarball
 
-##### Bash scripting in nano ####
+##### Bash scripting notes (my understanding)
+
+exit status -- every command in linux gives a result after running
+0 means success
+anything other than 0 means error
+
+echo $?  -- this shows last command result
+
+example:
+ls file.txt
+echo $?   # if file exist then 0 otherwise not 0
 
 
+#### conditions
+
+we can check result using if
+
+if [ $? -eq 0 ]
+then
+  echo "command worked"
+else
+  echo "command failed"
+fi
+
+-eq means equal
+-ne not equal
+-gt greater than
+-lt less than
+
+
+#### functions
+
+function is used to reuse code
+
+example:
+
+myfun() {
+  echo "hello from function"
+}
+
+myfun
+
+also we can return value
+
+myfun() {
+  return 1
+}
+
+myfun
+echo $?   # will print 1
+
+
+#### wildcards
+
+used to match files
+
+*  means anything
+?  means single character
+[] means range
+
+example:
+
+ls *.txt
+ls file?.txt
+ls file[1-3].txt
+
+
+#### case statement
+
+better than multiple if else
+
+example:
+
+case $1 in
+  start)
+    echo "starting"
+    ;;
+  stop)
+    echo "stopping"
+    ;;
+  *)
+    echo "unknown input"
+    ;;
+esac
+
+
+#### logging
+
+we can save output in file
+
+echo "started script" >> log.txt
+
+>  overwrite file
+>> append file
+
+2>  used for error
+
+example:
+ls wrongfile 2> error.txt
+
+
+#### while loop
+
+used to repeat
+
+example:
+
+i=1
+while [ $i -le 5 ]
+do
+  echo $i
+  ((i++))
+done
+
+
+#### debugging
+
+bash -x script.sh  # show what is happening
+
+set -x  # print commands
+set -e  # stop if error
+
+
+#### sed command
+
+used to change text in file
+
+example:
+
+sed 's/old/new/' file.txt
+
+this will replace first match
+
+for all:
+sed 's/old/new/g' file.txt
+
+
+#### important things i understood
+
+always check exit status when writing scripts
+use echo to debug
+write small scripts first
+functions make code clean
+logging helps when script fails
+
+Till now i have learnt this only , from tomorrow onwards i.e 22nd of april , will learn from this video on
+## udemy Linux Shell Scripting: A Project-Based Approach to Learning by Jason Cannon 
 
 
 
