@@ -189,8 +189,8 @@ we can save output in file
 
 echo "started script" >> log.txt
 
->  overwrite file
->> append file
+ > overwrite file
+>> append file aka dont erase whatever already in it
 
 2>  used for error
 
