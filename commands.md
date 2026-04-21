@@ -51,12 +51,57 @@ then save it as .bash_aliases/or whatever name u want then if u want to run that
 example- i saved this in that .bash_alias --- alias bored='echo meowwww' Now whenever i type bored in terminal , meowww will be echoed , so tadada 
 i made my own command
 
-WILDCARDS like * star wildcard then so many are there which is helpful in day today task like ? matches exactly one character ??- matches 2 characters
+WILDCARDS like * star wildcard means anything, then so many are there which is helpful in day today task like ? matches exactly one character ??- matches 2 characters
 [] matches any one character inside file like ls file[1-3].txt -ouput will be file1 file2 file3 as file1-file3 is already saved in my home directory
 [!] matches everything except like ls file[!1].txt will show us all files except file1.txt
+
 
 && wildcard controls how command will run together like cp file1.txt && cd file1.txt if first command succeed then only 2nd command will run else nehh
 || or wildcard runs next command only if previous fails
 ; runs commands no matter what 
+
+nano - can edit and create file using nano and can also write scripts using nano, will come to this later but lemme give example
+nano hi.txt , then nano editor will be opened in terminal where i can type anything then press CTRL+O to save whatever name i want or just leave hi.txt
+as it then i will do CTRL+X to exit , or if i want to write bash script using nano then will do
+nano script.sh #!/bin/bash in the first line and continue #! is shebang and /bin is the path and bash is the interpreter.
+
+sudo -  we run a command as a root aka admin
+sudo su - we become a root user and gain all powers aka DORAEMON ; jokes apart lets continue
+
+locate command is used for searching files using a pre-built database 
+example locate *.txt will output everything ending with .txt 
+locate -i *.TXT will give us same result as above command cause i means case in sensitive, if i want like only first 10 result. I can do
+locate -i *.txt | head -n 3 output will be only 3 not full huge bundle of results
+#locate command gives us from database so if database havent been updated like if i saved a file recently and then ask locate , no result will be there
+#so better to use find command or if using locate for recent file do sudo su updatedb first then do locate
+
+find - same as locate but find in real time 
+example- find *.txt will locate everything ending with txt or more advance version if you wanna search specific like
+find . -maxdepth 4 -iname "5.txt" -type f or if i wanna copy this or and send to ~/Desktop/copy_file folder use 
+find . -iname "5.txt" -maxdepth 4 -type f -exec cp {} ~/Desktop/copy_file \;  exec means execute and {} means whatever the results is copy that
+#if you replace exec with ok , then it will ask you before executing it but if files are big, it will be a headache
+
+cat - this means concatenate , it read files and outputs on terminal, it can be piped too along with various commands to maximize its results and make task easy
+tac command does same thing but in reverse order vertically and to do it horizontally words , use rev command
+head command gets us what i need from file in rows like head -n 5 file.txt will get me first 5 words in vertical form
+tail command is just same but it starts from last
+
+sort command sorts data inside file , can sort folders too by piping sort command with ls or etc etc
+sort -k sorts column in file , sort -r sorts in reverse order , sort -u removes duplicate texts
+example sort -k 2 means sort column 2 in a file . sort -u means remove duplicate words in a file.
+
+tar command is used to archieve files like
+tar cvf archieve.tar ~/Desktop/Files/file[1-3].txt  .tar is a extension , c means create v here means verbose like show us the progess on terminal,
+f means file name
+#To unarchieve aka extract it use xvf archieve.tar , and to compress archieve it use
+tar -czvf archive.tar.gz ~/Desktop/Files/file[1-3].txt   gz is also a extension, gotta have to use it , and to extract use
+tar -xzvf archive.tar.gz and to view tar file use tar -tf archieve.tar it will look and output whatever is inside that tarball
+
+##### Bash scripting in nano ####
+
+
+
+
+
 
 |
