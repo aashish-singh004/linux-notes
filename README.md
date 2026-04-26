@@ -7,8 +7,7 @@ This repository contains my personal Linux learning notes, including commands, e
 ## 📚 Learning Source
 - Linux Mastery: Master the Linux Command Line by Ziyad Yehia , Internet of Things Academy(Udemy)
 Bash Scripting and Shell Programming (Linux Command Line) by Jason Cannon (Udemy)
-
- Learn how to shell script through project-based training (Bash Scripting, Bash Programming, Sed, Grep, Awk, and More by Jason Cannon (Udemy)
+                                                                                                                                                               Learn how to shell script through project-based training (Bash Scripting, Bash Programming, Sed, Grep, Awk, and More by Jason Cannon (Udemy)
 ---
 
 ## 📂 What’s Inside
