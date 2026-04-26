@@ -59,7 +59,7 @@ Do ensure that each output is appended to the previous one.
 Once you have created hungry.sh , you are tasked to edit your crontab  and add a new row 
 so that hungry.sh runs every minute. Your computer loves data, after all
 
-Labas ! so lsts solve these above questions
+Labas ! so lets solve these above questions
 
 Solution 1- 
 
@@ -69,7 +69,7 @@ ls /run >> file2.txt
 Solution 2-
 
 cat file[1,2].txt | tee unsorted.txt | sort -r >> reversed.txt 
-## You can also write- cat file1.txt file2.txt | tee unsorted.txt | tac >> reversed.txt 
+##You can also write- cat file1.txt file2.txt | tee unsorted.txt | tac >> reversed.txt 
 
 Solution 3-
 
@@ -77,14 +77,14 @@ mkdir super_secret_stuff && touch ~/Desktop/super_secret_stuff/top_secret.txt
 sudo updated
 #Will enter the password
 locate top_secret.txt
-## && i used a operand to save time and it means if first commands get executed then only execute 2nd one. Lmao am feeling pro hahaha
+##&& i used a operand to save time and it means if first commands get executed then only execute 2nd one. Lmao am feeling pro hahaha
 
 Solution 4-
 
 PARTa-
           sudo find / -maxdepth 4 -type f -size +1M -exec ls -lh {} \;
-# giving sudo so error permission deny dont comes
-# \; ends the exec command
+#giving sudo so error permission deny dont comes
+#\; ends the exec command
 
 
 Partb-
@@ -100,7 +100,7 @@ Solution 6-
 
 crontab -e
 * * * * * /home/aashish/hungry.sh 
-# will press CTRL+O in crontab to save whatever name we wanna give or leave it as it is and press enter and will press CTRL+X to exit
-# * means every minute , every hour , every day of month , every month , every day of the week this hungry.sh sript will run.
+#will press CTRL+O in crontab to save whatever name we wanna give or leave it as it is and press enter and will press CTRL+X to exit
+#* means every minute , every hour , every day of month , every month , every day of the week this hungry.sh sript will run.
 
 
