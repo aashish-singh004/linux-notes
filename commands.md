@@ -243,9 +243,30 @@ functions make code clean
 logging helps when script fails
 
 Till now i have learnt this only , from tomorrow onwards i.e 22nd of april , will learn from this video on
-## udemy Linux Shell Scripting: A Project-Based Approach to Learning by Jason Cannon 
+## Linux Shell Scripting: A Project-Based Approach to Learning by Jason Cannon (udemy)
 
+Before starting need few tools like oracle virtual box , vagrant by Hashicorp developer , Microsoft visual c++ Redistributable Package and the last thing git.
 
+## Important commands we should know to automate the process
+vagrant box add { commands download a virtual machine image for Vagrant }
+vagrant init - Creates a new Vagrant project with a config file
+vagrant up  - Starts and sets up the virtual machine
+vagrant halt - Stops the virtual machine but dont deletes anything
+vagrant destroy - Deletes the virtual machine completely
+vagrant ssh - Connects to the VM via SSH aka makes a path like login thing
+vagrant status - Shows current state of the VM
+vagrant reload - Restarts the VM
+vagrant suspend - Pauses the VM
+vagrant resume - Resumes a paused VM
+vagrant provision - Runs setup scripts again
+vagrant box list - Lists installed boxes
+vagrant box remove <name> → Removes a box
+vagrant global-status → Shows all Vagrant VMs
 
+:-)Things so easy with vagrant, haha like full automatic thing with my windows terminal lmao.
+To config like to add multiple multiple users in oracle virtual box or to change names , i personally use visual studio code and after
+doing some changes , run vagrant reload to execute the changes 
+To edit scripts we can use nano or vim, earlier have used nano so will use vim too so can know everything
 
-|
+#  Thats it for todsy i.e 26th of April 2026 , will study tomorrow now and will write notes. NOw will learn lithunian language hehehe
+
