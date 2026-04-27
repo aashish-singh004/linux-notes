@@ -99,8 +99,87 @@ date >> "$HOME/demands.log"
 Solution 6-
 
 crontab -e
-* * * * * /home/aashish/hungry.sh 
+***** /home/aashish/hungry.sh 
 #will press CTRL+O in crontab to save whatever name we wanna give or leave it as it is and press enter and will press CTRL+X to exit
 #* means every minute , every hour , every day of month , every month , every day of the week this hungry.sh sript will run.
 
 
+
+## EXTRA QUESTIONS FOR SHELL SCRIPTING
+
+
+## Quenstion1-The goal of this exercise is to create a shell script that adds users to the same Linux system as the 
+script is executed on. 
+Scenario: 
+Imagine that you're working as a Linux System Administrator for a fast growing company.  The latest 
+company initiative requires you to build and deploy dozens of servers.  You're falling behind 
+schedule and are going to miss your deadline for these new server deployments because you are 
+constantly being interrupted by the help desk calling you to create new Linux accounts for all the 
+people in the company who have been recruited to test out the company's newest Linux-based 
+application. 
+In order to meet your deadline and keep your sanity, you decide to write a shell script that will create 
+new user accounts.  Once you're done with the shell script you can put the help desk in charge of 
+creating new accounts which will finally allow you to work uninterrupted and complete your server 
+deployments on time. 
+Shell Script Requirements: 
+You think about what the shell script must do and how you would like it operate.  You come up with 
+the following list. 
+The script: 
+● Is named "add-local-user.sh ". 
+● Enforces that it be executed with superuser (root) privileges.  If the script is not executed with 
+superuser privileges it will not attempt to create a user and returns an exit status of 1. 
+● Prompts the person who executed the script to enter the username (login), the name for 
+person who will be using the account, and the initial password for the account. 
+● Creates a new user on the local system with the input provided by the user. 
+● Informs the user if the account was not able to be created for some reason.  If the account is 
+not created, the script is to return an exit status of 1. 
+● Displays the username, password, and host where the account was created.  This way the 
+help desk staff can copy the output of the script in order to easily deliver the information to 
+the new account holder.
+
+
+Answer-  
+
+#!/bin/bash
+
+#  Enforces that it be executed with superuser (root) privileges.
+if [[ "${UID}" -ne 0 ]]; then
+echo "Use sudo along with the command to run this script"
+exit 1
+fi
+
+# Prompts the person who executed the script to enter the username (login), the name for
+person who will be using the account, and the initial password for the account.
+
+
+# lets solve this first by using read -p command ( use man command if u wanna know more bout the below command)
+
+read -p "Please enter your username: " login
+read -p "Please enter your name: " name
+read -p "Please enter your password: " password
+
+# Creates a new user on the local system with the input provided by the user.
+
+useradd -c "${name}" -m "${login}"
+
+# Informs the user if the account was not able to be created for some reason.
+
+if [[ "$?" -ne 0 ]]; then
+echo "In the name of God,please try again, you did something wrong and acc didnt got created"
+exit 1
+fi
+# Displays the username, password, and host where the account was created
+
+echo "${login}:${password}" | chpasswd
+
+#set force password
+passwd -e "${login}"
+
+HOSTNAME=$(hostname)
+
+echo "--------------------------------"
+echo "User created successfully"
+echo "Username : ${login}"
+echo "Password : ${password}"
+echo "Host     : ${HOSTNAME}"
+echo "--------------------------------"
