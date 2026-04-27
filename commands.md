@@ -268,5 +268,13 @@ To config like to add multiple multiple users in oracle virtual box or to change
 doing some changes , run vagrant reload to execute the changes 
 To edit scripts we can use nano or vim, earlier have used nano so will use vim too so can know everything
 
-#  Thats it for todsy i.e 26th of April 2026 , will study tomorrow now and will write notes. NOw will learn lithunian language hehehe
+#  Thats it for today i.e 26th of April 2026 , will study tomorrow now and will write notes. Now will learn lithunian language hehehe
 
+sudo useradd Aashish - this will add Aashish as a user in our linux system and to switch to Aashish
+use sudo su - aashish
+ps -ef  -To look for process table
+passwd -e to force change password after first login ( used in shell scripting)
+sudo chpasswd - to set password for the user , used in shell scripting mainly  or we can use
+passwd -e but always use sudo chpasswd , now to run the script use
+ssh Singh@localhost  {singh is the username that i had set when i ran my script}
+To delete user use - sudo userdel Singh 
