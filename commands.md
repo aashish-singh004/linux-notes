@@ -268,7 +268,7 @@ To config like to add multiple multiple users in oracle virtual box or to change
 doing some changes , run vagrant reload to execute the changes 
 To edit scripts we can use nano or vim, earlier have used nano so will use vim too so can know everything
 
-#  Thats it for today i.e 26th of April 2026 , will study tomorrow now and will write notes. Now will learn lithunian language hehehe
+### Thats it for today i.e 26th of April 2026 , will study tomorrow now and will write notes. Now will learn lithunian language hehehe
 
 sudo useradd Aashish - this will add Aashish as a user in our linux system and to switch to Aashish
 use sudo su - aashish
@@ -278,3 +278,21 @@ sudo chpasswd - to set password for the user , used in shell scripting mainly  o
 passwd -e but always use sudo chpasswd , now to run the script use
 ssh Singh@localhost  {singh is the username that i had set when i ran my script}
 To delete user use - sudo userdel Singh 
+Hashing like , we can use some commands to make strong password , verify files source etc, command-
+sha256sum/sha512sum file.txt output will be long random looking string +filename , we need hash only so we can use command like this-
+sha512sum file.txt | awk "{print $1}"   , onlr print first colum aka hash only
+fold command - breaking text into fixed size like
+echo "Aashish" | fold w-3    -w here is width like how many chracter per line thing and this command will give result like this
+Aas
+his
+h
+shuf - command like in random order , it shuffle and we can use shuf -i for 1-10 random no. between 1-10 or shuf -n 1 file.txt , random 1 line from file.
+basename - strips directory and suffix from file name like basename /name/Aashish.sh will give Aashish.sh
+dirname - strips last component from file name like dirname /name/Aashish.sh will give /name
+Arguments like $@ is euqal to $1 , $2.. , $0 means supplying whatever when running script and $# tells us how many arguments we passed while running the script.
+
+
+
+
+
+
