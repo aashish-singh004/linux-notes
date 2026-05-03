@@ -179,7 +179,104 @@ HOSTNAME=$(hostname)
 
 echo "--------------------------------"
 echo "User created successfully"
+
 echo "Username : ${login}"
+
 echo "Password : ${password}"
+
 echo "Host     : ${HOSTNAME}"
+
 echo "--------------------------------"
+
+ #QUESTION 2
+ 
+The goal of this exercise is to create a shell script that adds users to the same Linux system as the 
+script is executed on. 
+Scenario: 
+The help desk team has been using the "add-local-user.sh " script you created.  They're really 
+happy that they don't have to wait on you to create new accounts. :-)  However, they would like for 
+you to make a couple of changes to the script when you get a chance. 
+They're tired of coming up with a unique password for each user they create.  As a matter of fact, 
+Jim keeps using "password" as the password for every account.  They think it would be great if the 
+script automatically generated a password for each new account.  That way Jim and the rest of the 
+team won't have to even think about passwords any longer. 
+Also, they think it would be a little more efficient if they could just specify the account name and 
+account comments on the command line instead of being prompted for them.  They already know 
+what they are going to type so they would just rather type it all in at one time. 
+Since you're happy that you're not the one creating all the new accounts any longer, you decide to 
+accommodate their requests.  (You're so nice!) 
+Shell Script Requirements: 
+You have your requirements from the "add-local-user.sh " script you created.  You decide to use 
+those as the basis for your new requirements.  You come up with the following list. 
+The script: 
+● Is named "add-new-local-user.sh ".  (You add the word new to distinguish it from the 
+original script.) 
+● Enforces that it be executed with superuser (root) privileges.  If the script is not executed with 
+superuser privileges it will not attempt to create a user and returns an exit status of 1. 
+● Provides a usage statement much like you would find in a man page if the user does not 
+supply an account name on the command line and returns an exit status of 1. 
+● Uses the first argument provided on the command line as the username for the account.  Any 
+remaining arguments on the command line will be treated as the comment for the account. 
+http://www.LinuxTrainingAcademy.com 
+● Automatically generates a password for the new account. 
+● Informs the user if the account was not able to be created for some reason.  If the account is 
+not created, the script is to return an exit status of 1. 
+● Displays the username, password, and host where the account was created.  This way the 
+help desk staff can copy the output of the script in order to easily deliver the information to 
+the new account holder. 
+#!/bin/bash
+
+#Tasks to complete in this script
+#Making sure the script is being executed with superuser privileges
+#Supplying username as an argument to the script
+#Optionally we can provide a comment for the account as an argument
+#A password should be automatically generated for the account
+
+if [[ "${UID}" -ne 0 ]];then
+echo "Execute the script with sudo command mate"
+exit 1
+fi
+
+#If they don't supply at least one argument, then give them help
+
+if [[ "${#}" -lt 1 ]];then
+echo "Please supply atleast 1 argument by typing on the command line"
+echo "Create an account on the local system"
+exit 1
+fi
+
+USER_NAME="${1}"
+
+shift
+COMMENT="${@}"
+
+PASSWORD=$(date +%s%N | sha512sum | head -c48)
+
+#Creating the user with the password
+useradd -c "${COMMENT}" -m ${USER_NAME}
+
+#If useradd command doesnot succeed, then will tell user something went wrong
+
+if [[ "${?}" -ne 0 ]];then 
+echo "The account could not be created"
+exit 1 
+fi
+
+echo "${PASSWORD} |chpasswd"
+if [[ "${?}" -ne 0 ]];then
+echo "Password for the account could not be set"
+exit 1
+fi
+
+passwd -e ${USER_NAME}
+
+echo 
+echo "username: "
+echo "${USER_Name}"
+echo 
+echo "password: "
+echo "${PASSWORD}"
+echo
+echo "host"
+echo "${HOSTNAME}"
+exit 0
