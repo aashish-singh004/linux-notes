@@ -144,8 +144,11 @@ Answer-
 
 #  Enforces that it be executed with superuser (root) privileges.
 if [[ "${UID}" -ne 0 ]]; then
+
 echo "Use sudo along with the command to run this script"
+
 exit 1
+
 fi
 
 # Prompts the person who executed the script to enter the username (login), the name for
@@ -155,7 +158,9 @@ person who will be using the account, and the initial password for the account.
 # lets solve this first by using read -p command ( use man command if u wanna know more bout the below command)
 
 read -p "Please enter your username: " login
+
 read -p "Please enter your name: " name
+
 read -p "Please enter your password: " password
 
 # Creates a new user on the local system with the input provided by the user.
@@ -235,44 +240,58 @@ the new account holder.
 #Optionally we can provide a comment for the account as an argument
 #A password should be automatically generated for the account
 
+ANSWER-
+
 if [[ "${UID}" -ne 0 ]];then
 
 echo "Execute the script with sudo command mate"
 
 exit 1
+
 fi
 
 #If they don't supply at least one argument, then give them help
 
 if [[ "${#}" -lt 1 ]];then
+
 echo "Please supply atleast 1 argument by typing on the command line"
 
 echo "Create an account on the local system"
 
-exit 1
+exit 
+
 fi
 
 USER_NAME="${1}"
 
 shift
+
 COMMENT="${@}"
 
 PASSWORD=$(date +%s%N | sha512sum | head -c48)
 
 #Creating the user with the password
+
 useradd -c "${COMMENT}" -m ${USER_NAME}
 
 #If useradd command doesnot succeed, then will tell user something went wrong
 
 if [[ "${?}" -ne 0 ]];then 
+
 echo "The account could not be created"
+
 exit 1 
+
 fi
 
 echo "${PASSWORD} |chpasswd"
+
 if [[ "${?}" -ne 0 ]];then
+
 echo "Password for the account could not be set"
+
 exit 1
+
 fi
 
 passwd -e ${USER_NAME}
