@@ -165,7 +165,9 @@ useradd -c "${name}" -m "${login}"
 # Informs the user if the account was not able to be created for some reason.
 
 if [[ "$?" -ne 0 ]]; then
+
 echo "In the name of God,please try again, you did something wrong and acc didnt got created"
+
 exit 1
 fi
 # Displays the username, password, and host where the account was created
@@ -234,7 +236,9 @@ the new account holder.
 #A password should be automatically generated for the account
 
 if [[ "${UID}" -ne 0 ]];then
+
 echo "Execute the script with sudo command mate"
+
 exit 1
 fi
 
@@ -242,7 +246,9 @@ fi
 
 if [[ "${#}" -lt 1 ]];then
 echo "Please supply atleast 1 argument by typing on the command line"
+
 echo "Create an account on the local system"
+
 exit 1
 fi
 
