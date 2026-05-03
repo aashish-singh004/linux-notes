@@ -178,6 +178,7 @@ passwd -e "${login}"
 HOSTNAME=$(hostname)
 
 echo "--------------------------------"
+
 echo "User created successfully"
 
 echo "Username : ${login}"
@@ -271,12 +272,21 @@ fi
 passwd -e ${USER_NAME}
 
 echo 
+
 echo "username: "
+
 echo "${USER_Name}"
+
 echo 
+
 echo "password: "
+
 echo "${PASSWORD}"
+
 echo
+
 echo "host"
+
 echo "${HOSTNAME}"
+
 exit 0
