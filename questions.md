@@ -108,7 +108,7 @@ crontab -e
 ## EXTRA QUESTIONS FOR SHELL SCRIPTING
 
 
-## Quenstion1-The goal of this exercise is to create a shell script that adds users to the same Linux system as the 
+## Task 7-The goal of this exercise is to create a shell script that adds users to the same Linux system as the 
 script is executed on. 
 Scenario: 
 Imagine that you're working as a Linux System Administrator for a fast growing company.  The latest 
@@ -196,7 +196,7 @@ echo "Host     : ${HOSTNAME}"
 
 echo "--------------------------------"
 
- #QUESTION 2
+## TASK 8
  
 The goal of this exercise is to create a shell script that adds users to the same Linux system as the 
 script is executed on. 
@@ -225,13 +225,15 @@ superuser privileges it will not attempt to create a user and returns an exit st
 supply an account name on the command line and returns an exit status of 1. 
 ● Uses the first argument provided on the command line as the username for the account.  Any 
 remaining arguments on the command line will be treated as the comment for the account. 
-http://www.LinuxTrainingAcademy.com 
 ● Automatically generates a password for the new account. 
 ● Informs the user if the account was not able to be created for some reason.  If the account is 
 not created, the script is to return an exit status of 1. 
 ● Displays the username, password, and host where the account was created.  This way the 
 help desk staff can copy the output of the script in order to easily deliver the information to 
 the new account holder. 
+
+## ANSWER
+
 #!/bin/bash
 
 #Tasks to complete in this script
@@ -240,7 +242,6 @@ the new account holder.
 #Optionally we can provide a comment for the account as an argument
 #A password should be automatically generated for the account
 
-ANSWER-
 
 if [[ "${UID}" -ne 0 ]];then
 
@@ -316,7 +317,7 @@ echo "${HOSTNAME}"
 
 exit 0
 
-## QUESTION 4 - Instructions
+## TASK 9 
 
 Goal:
 The goal of this exercise is to create a shell script that adds users to the same Linux system as the script is executed on.  Additionally this script will conform to Linux program standard conventions.
@@ -347,7 +348,7 @@ Displays the username, password, and host where the account was created.  This w
 
 Suppress the output from all other commands.
 
-## ANSWER4
+## ANSWER
 
 #!/bin/bash
 
@@ -414,3 +415,6 @@ echo
 echo "host:"
 
 echo "${HOSTNAME}"
+
+exit 0
+
